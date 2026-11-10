@@ -1,0 +1,12 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="100" fill="#1A2B4C"/>
+  <circle cx="100" cy="100" r="94" fill="url(#avatar_grad)"/>
+  <circle cx="100" cy="72" r="34" fill="#FFFFFF"/>
+  <path d="M38 158C38 126 64 102 100 102C136 102 162 126 162 158V174H38V158Z" fill="#FFFFFF"/>
+  <defs>
+    <linearGradient id="avatar_grad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00A8B5"/>
+      <stop offset="1" stop-color="#0F1E36"/>
+    </linearGradient>
+  </defs>
+</svg>

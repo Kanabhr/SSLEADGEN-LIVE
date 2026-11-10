@@ -1,0 +1,438 @@
+/* ==========================================================================
+   SS ADVISORY BRAND COLOR SYSTEM & LAYOUT STABILITY ENGINE
+   Brand Colors: Primary Navy (#0A192F / #0B2545), Brand Cyan/Teal (#00A8B5)
+   ========================================================================== */
+
+:root {
+    --ss-navy-dark: #0A192F;
+    --ss-navy: #0B2545;
+    --ss-cyan: #00A8B5;
+    --ss-cyan-light: rgba(0, 168, 181, 0.12);
+    --ss-cyan-hover: #008C97;
+    --ss-bg: #F8FAFC;
+    --ss-card-border: #E2E8F0;
+    --ss-text-dark: #0F172A;
+    --ss-text-muted: #64748B;
+}
+
+/* 1. Global Brand Primary Buttons & Highlights */
+.btn-primary {
+    background-color: var(--ss-cyan) !important;
+    border-color: var(--ss-cyan) !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: var(--ss-cyan-hover) !important;
+    border-color: var(--ss-cyan-hover) !important;
+    color: #ffffff !important;
+}
+
+.btn-outline-primary {
+    color: var(--ss-cyan) !important;
+    border-color: var(--ss-cyan) !important;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active {
+    background-color: var(--ss-cyan) !important;
+    color: #ffffff !important;
+}
+
+.text-primary {
+    color: var(--ss-cyan) !important;
+}
+
+.bg-primary {
+    background-color: var(--ss-cyan) !important;
+}
+
+.bg-soft-primary {
+    background-color: var(--ss-cyan-light) !important;
+    color: var(--ss-cyan) !important;
+}
+
+/* 2. Favicon & Logo Ratio Fixes (No Stretch) */
+.brand-logo-img, .preloader-img, .logo-img {
+    width: 38px !important;
+    height: 38px !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+}
+
+/* 3. Header Bar Profile Avatar & Bell Strict Size Constraints (Fixes Giant Avatar Bug!) */
+.user-avatar-img, .header-user-avatar-img {
+    width: 38px !important;
+    height: 38px !important;
+    max-width: 38px !important;
+    max-height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+    display: block !important;
+}
+
+.header-avatar-circle {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    max-width: 38px !important;
+    max-height: 38px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, var(--ss-navy) 0%, var(--ss-cyan) 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    border: 2px solid #E2E8F0 !important;
+}
+
+.header-avatar-circle img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.header-action-bell {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background-color: #F1F5F9 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--ss-text-dark) !important;
+    position: relative !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+}
+
+.header-action-bell:hover {
+    background-color: #E2E8F0 !important;
+}
+
+.header-bell-badge {
+    position: absolute !important;
+    top: -2px !important;
+    right: -2px !important;
+    background-color: #EF4444 !important;
+    color: #ffffff !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    padding: 2px 5px !important;
+    border-radius: 10px !important;
+    border: 2px solid #ffffff !important;
+    line-height: 1 !important;
+}
+
+/* 4. Header Left Title & Breadcrumb Clean Stack (Fixes Overlapping Title/Breadcrumb Bug!) */
+.header-title-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-title-block h4 {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    color: var(--ss-text-dark) !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+}
+
+.header-title-block .breadcrumb {
+    margin: 2px 0 0 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-size: 11px !important;
+    color: var(--ss-text-muted) !important;
+}
+
+.header-title-block .breadcrumb a {
+    color: var(--ss-text-muted) !important;
+    text-decoration: none !important;
+}
+
+.header-title-block .breadcrumb a:hover {
+    color: var(--ss-cyan) !important;
+}
+
+.header-title-block .breadcrumb .active {
+    color: var(--ss-text-dark) !important;
+    font-weight: 600 !important;
+}
+
+/* 5. Status Pills */
+.status-pill-inforce {
+    background-color: #DCFCE7;
+    color: #15803D;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.status-pill-inactive {
+    background-color: #FEF3C7;
+    color: #B45309;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* 6. Dashboard Filters & Search */
+.dash-filter-card {
+    background: #ffffff;
+    border: 1px solid var(--ss-card-border);
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+
+.dash-filter-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dash-filter-input-group i {
+    position: absolute;
+    left: 12px;
+    color: #94A3B8;
+}
+
+.dash-filter-input {
+    padding-left: 36px !important;
+    font-size: 13px;
+    border-radius: 8px;
+    border: 1px solid #CBD5E1;
+}
+
+.btn-search-navy {
+    background-color: var(--ss-navy);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 8px;
+    border: none;
+    padding: 8px 16px;
+}
+
+.btn-search-navy:hover {
+    background-color: var(--ss-navy-dark);
+    color: #ffffff;
+}
+
+.btn-search-clear {
+    background-color: #F1F5F9;
+    color: #64748B;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+    padding: 8px 16px;
+}
+
+.dash-date-range-box {
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    padding: 6px 12px;
+    background: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ss-text-dark);
+}
+
+/* 7. Card Widget System */
+.card-widget {
+    background: #ffffff;
+    border: 1px solid var(--ss-card-border);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+.widget-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ss-text-dark);
+}
+
+/* 8. DataTables Filter & Length Controls Alignment (Fixes Search Bar Same Row & Right Alignment Across All Pages) */
+.dataTables_wrapper .row:first-child {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    margin-bottom: 16px !important;
+}
+
+.dataTables_wrapper .row:first-child > [class*="col-"] {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.dataTables_wrapper .row:first-child > [class*="col-"]:first-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+.dataTables_wrapper .row:first-child > [class*="col-"]:last-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+    text-align: right !important;
+}
+
+.dataTables_wrapper div.dataTables_filter {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    margin: 0 0 0 auto !important;
+    text-align: right !important;
+    float: right !important;
+}
+
+.dataTables_wrapper div.dataTables_filter label {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    margin: 0 !important;
+    gap: 8px !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+}
+
+.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 8px !important;
+}
+
+/* Force search filter and control elements to align right */
+.dataTables_wrapper div.dataTables_filter,
+.dataTables_wrapper .dataTables_filter {
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+    float: right !important;
+    text-align: right !important;
+}
+
+.dataTables_wrapper div.dataTables_filter label,
+.dataTables_wrapper .dataTables_filter label {
+    display: inline-flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    text-align: right !important;
+}
+
+
+/* Style for custom header row created dynamically in script.js */
+.dt-mobile-header-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    margin-bottom: 16px !important;
+    gap: 12px !important;
+}
+
+.dt-mobile-header-row .dataTables_length {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.dt-mobile-header-row .dataTables_filter {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+}
+
+/* Restore table responsive horizontal scrolling */
+.table-responsive,
+.table-responsive .dataTables_wrapper {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive {
+    padding-bottom: 80px !important; /* Prevent dropdown menu clipping in scrollable tables */
+}
+
+/* Fix submenu display in collapsed sidebar state */
+body.nxl-mini-navigation .nxl-item.nxl-hasmenu .nxl-submenu {
+    display: none !important;
+}
+
+.nxl-item.nxl-custom-hasmenu:not(.menu-open) .nxl-submenu {
+    display: none !important;
+}
+
+/* Force Clients parent navigation item to be persistently active (cyan background) on all pages */
+.nxl-item.nxl-custom-hasmenu.active > a {
+    background-color: var(--ss-cyan) !important;
+    color: #ffffff !important;
+    border-radius: 4px;
+}
+
+.nxl-item.nxl-custom-hasmenu.active > a * {
+    color: #ffffff !important;
+}
+
+/* Force Clients submenu to always be open in expanded sidebar state on all pages */
+body:not(.nxl-mini-navigation) .nxl-item.nxl-custom-hasmenu.menu-open .nxl-submenu {
+    display: block !important;
+    padding: 4px 0 4px 43px !important;
+    margin: 0 !important;
+}
+
+
+
+
+
+
+/* Sectioned Modal Design (Matches Inforce Client Module Popups) */
+.modal-section-card {
+    background-color: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    padding: 18px !important;
+    margin-bottom: 20px !important;
+}
+
+.modal-section-card:last-child {
+    margin-bottom: 0 !important;
+}
+
+.modal-section-title {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: var(--ss-navy, #0B2545) !important;
+    margin-bottom: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding-bottom: 8px !important;
+}

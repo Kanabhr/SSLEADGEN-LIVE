@@ -1,0 +1,59 @@
+/* Page styles for calendar */
+.calendar-table th {
+            text-align: center;
+            background-color: #F8FAFC !important;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 12px;
+        }
+
+        .calendar-cell {
+            height: 110px;
+            vertical-align: top !important;
+            padding: 8px !important;
+            position: relative;
+            background: #ffffff;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .calendar-cell:hover {
+            background-color: #F1F5F9 !important;
+        }
+
+        .calendar-cell.other-month {
+            background-color: #F8FAFC !important;
+            color: #CBD5E1;
+        }
+
+        .calendar-cell.today {
+            background-color: rgba(0, 168, 181, 0.06) !important;
+            border: 2px solid var(--color-cyan) !important;
+        }
+
+        .event-badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .event-badge:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .event-blue { background-color: #DBEAFE; color: #1E40AF; border-left: 3px solid #2563EB; }
+        .event-green { background-color: #DCFCE7; color: #166534; border-left: 3px solid #16A34A; }
+        .event-yellow { background-color: #FEF3C7; color: #92400E; border-left: 3px solid #D97706; }
+        .event-purple { background-color: #F3E8FF; color: #6B21A8; border-left: 3px solid #9333EA; }
