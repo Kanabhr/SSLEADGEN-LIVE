@@ -117,6 +117,8 @@ function openCancellationUpdateModal(clientName, company, clientId) {
                             d.phone_search = $('#filterNumberSearch').val();
                             d.address_search = $('#filterAddressSearch').val();
                             d.dob_search = $('#filterDobSearch').val();
+                            d.created_from = $('#filterCreatedFrom').val();
+                            d.created_to = $('#filterCreatedTo').val();
                         },
                         dataSrc: function(json) {
                             // Update the count in the header
@@ -240,11 +242,13 @@ function openCancellationUpdateModal(clientName, company, clientId) {
                     $('#filterNumberSearch').val('');
                     $('#filterAddressSearch').val('');
                     $('#filterDobSearch').val('');
+                    $('#filterCreatedFrom').val('');
+                    $('#filterCreatedTo').val('');
                     inforceClientsTable.ajax.reload();
                 });
 
                 // Allow Enter key to trigger search
-                $('#filterClientSearch, #filterNumberSearch, #filterAddressSearch, #filterDobSearch').on('keypress', function(e) {
+                $('#filterClientSearch, #filterNumberSearch, #filterAddressSearch, #filterDobSearch, #filterCreatedFrom, #filterCreatedTo').on('keypress', function(e) {
                     if (e.which === 13) {
                         e.preventDefault();
                         $('#btnExecuteSearch').click();

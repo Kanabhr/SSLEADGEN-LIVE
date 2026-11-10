@@ -57,6 +57,8 @@ class ClientController extends Controller
             $query->whereHas('client', fn (Builder $client) => $client->whereDate('dob', $dobSearch));
         }
 
+        $this->applyCreatedDateRange($query, $request);
+
         $draw = (int) $request->input('draw', 1);
         $start = (int) $request->input('start', 0);
         $length = (int) $request->input('length', 10);
@@ -309,6 +311,35 @@ class ClientController extends Controller
                 $query->whereDate('dob', $parsedDob);
             } catch (\Exception $e) {
                 $query->whereDate('dob', $dobSearch);
+            }
+        }
+
+        $this->applyCreatedDateRange($query, $request);
+    }
+
+    /**
+     * Created From / Created To filter (inclusive of both days), based on created_at.
+     * Invalid or empty values are ignored.
+     */
+    private function applyCreatedDateRange(Builder $query, Request $request, ?string $column = null): void
+    {
+        $column = $column ?: $query->getModel()->getTable() . '.created_at';
+
+        $createdFrom = trim((string) ($request->input('created_from') ?? $request->query('created_from', '')));
+        if ($createdFrom !== '') {
+            try {
+                $query->where($column, '>=', \Carbon\Carbon::parse($createdFrom)->startOfDay());
+            } catch (\Exception $e) {
+                // ignore an unparsable date
+            }
+        }
+
+        $createdTo = trim((string) ($request->input('created_to') ?? $request->query('created_to', '')));
+        if ($createdTo !== '') {
+            try {
+                $query->where($column, '<', \Carbon\Carbon::parse($createdTo)->addDay()->startOfDay());
+            } catch (\Exception $e) {
+                // ignore an unparsable date
             }
         }
     }

@@ -519,6 +519,8 @@ function initializeLoginClientsTable() {
                     d.phone_search = $('#filterNumberSearch').val();
                     d.address_search = $('#filterAddressSearch').val();
                     d.dob_search = $('#filterDobSearch').val();
+                    d.created_from = $('#filterCreatedFrom').val();
+                    d.created_to = $('#filterCreatedTo').val();
                 },
                 dataSrc: function(json) {
                     $('#loginClientsCount').text('(' + (json.recordsTotal || 0).toLocaleString() + ' Clients)');
@@ -1669,12 +1671,14 @@ $(document).on('click', '#btnClearSearch', function (e) {
     $('#filterNumberSearch').val('');
     $('#filterAddressSearch').val('');
     $('#filterDobSearch').val('');
+    $('#filterCreatedFrom').val('');
+    $('#filterCreatedTo').val('');
     if (loginClientsTable && $.fn.DataTable.isDataTable('#loginClientsTable')) {
         loginClientsTable.search('').columns().search('').ajax.reload();
     }
 });
 
-$(document).on('keypress', '#filterClientSearch, #filterNumberSearch, #filterAddressSearch, #filterDobSearch', function(e) {
+$(document).on('keypress', '#filterClientSearch, #filterNumberSearch, #filterAddressSearch, #filterDobSearch, #filterCreatedFrom, #filterCreatedTo', function(e) {
     if (e.which === 13) {
         e.preventDefault();
         $('#btnExecuteSearch').click();

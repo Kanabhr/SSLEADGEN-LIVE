@@ -69,6 +69,20 @@
                                 <input type="date" id="filterDobSearch" class="form-control dash-filter-input" />
                             </div>
                         </div>
+                        <div style="min-width: 140px;" class="flex-fill">
+                            <label class="fs-11 fw-bold text-muted mb-1 d-block">Created From</label>
+                            <div class="dash-filter-input-group">
+                                <i class="feather-calendar"></i>
+                                <input type="date" id="filterCreatedFrom" class="form-control dash-filter-input" />
+                            </div>
+                        </div>
+                        <div style="min-width: 140px;" class="flex-fill">
+                            <label class="fs-11 fw-bold text-muted mb-1 d-block">Created To</label>
+                            <div class="dash-filter-input-group">
+                                <i class="feather-calendar"></i>
+                                <input type="date" id="filterCreatedTo" class="form-control dash-filter-input" />
+                            </div>
+                        </div>
                     </div>
                     <div class="d-flex align-items-center gap-2 flex-shrink-0">
                         <button id="btnExecuteSearch" class="btn btn-navy px-3 py-2 fw-bold"><i
