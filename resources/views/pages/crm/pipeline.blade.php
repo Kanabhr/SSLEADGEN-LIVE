@@ -130,11 +130,11 @@
                         <thead>
                             <tr class="fs-12 text-muted text-uppercase fw-semibold" style="background: #F8FAFC;">
                                 <th>Lead Name</th>
-                                <th>Contact Details</th>
+                                <th>Mobile Number</th>
+                                <th>Email ID</th>
                                 <th>Source</th>
+                                <th>Adviser</th>
                                 <th>Stage</th>
-                                <th>Comments</th>
-                                <th>Last Contacted</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -833,4 +833,3 @@
 @endpush
 
 @endsection
-

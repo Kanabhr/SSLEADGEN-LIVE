@@ -328,6 +328,26 @@ $(document).on('click', '.action-kebab-btn', function (e) {
             'right': 'auto',
             'z-index': '999999'
         });
+
+        // Login Client & Inforce Client pages only: keep the whole menu on screen.
+        // If it does not fit below the button it opens upwards when there is more room,
+        // and it scrolls (max-height + overflow-y) when the screen is shorter than the menu.
+        if (wrapper.closest('#loginClientsTable, #inforceClientsTable').length) {
+            const gap = 8;
+            const menuHeight = dropdown[0].scrollHeight;
+            const spaceBelow = window.innerHeight - rect.bottom - gap;
+            const spaceAbove = rect.top - gap;
+            const openUp = menuHeight > spaceBelow && spaceAbove > spaceBelow;
+            const available = Math.max(120, openUp ? spaceAbove : spaceBelow);
+            const finalHeight = Math.min(menuHeight, available);
+
+            dropdown.css({
+                'max-height': available + 'px',
+                'overflow-y': 'auto',
+                'overscroll-behavior': 'contain',
+                'top': (openUp ? Math.max(gap, rect.top - finalHeight - 4) : rect.bottom + 4) + 'px'
+            });
+        }
     }
 });
 

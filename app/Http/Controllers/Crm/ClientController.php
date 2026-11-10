@@ -447,6 +447,9 @@ class ClientController extends Controller
             // Filtered records count
             $filteredRecords = $query->count();
 
+            // Total ANP of every login client matching the current search/filters (all pages, not just this one)
+            $anpTotal = (float) (clone $query)->sum('anp');
+
             // Apply ordering
             $columns = ['policy_no', 'company', 'first_name', 'phone', 'login_date', 'anp', 'status_compliance', 'sent_to_client'];
             if (isset($columns[$orderColumnIndex])) {
@@ -521,6 +524,7 @@ class ClientController extends Controller
                 'draw' => $draw,
                 'recordsTotal' => $totalRecords,
                 'recordsFiltered' => $filteredRecords,
+                'anp_total' => $anpTotal,
                 'data' => $data
             ]);
         } catch (\Throwable $e) {
@@ -1446,7 +1450,7 @@ class ClientController extends Controller
     {
         $data = $request->validate([
             'npw_issue_date' => 'nullable|date',
-            'npw_premium' => 'required|numeric|min:0',
+            'npw_premium' => 'nullable|numeric|min:0',
             'npw_premium_mode' => 'nullable|string|max:100',
             'npw_admin' => 'nullable|string|max:100',
             'npw_pending' => 'nullable|string|max:50',
@@ -1560,17 +1564,26 @@ class ClientController extends Controller
 
         $company = trim((string) $request->input('company', ''));
         if ($company !== '') {
-            $matchedCompany = Insurer::where('is_active', true)
-                ->where('name', $company)
-                ->value('name');
+            // The company dropdowns are filled from the "insurance_company" dropdown values
+            // (Manage Dropdowns), so accept those as well as the active insurers table.
+            $normalize = fn ($value) => mb_strtolower(preg_replace('/\s+/u', ' ', trim((string) $value)));
+            $validCompanies = \App\Models\LookupValue::where('group', 'insurance_company')
+                ->where('is_active', true)
+                ->pluck('name')
+                ->merge(Insurer::where('is_active', true)->pluck('name'))
+                ->filter();
+
+            $matchedCompany = $validCompanies->first(
+                fn ($name) => $normalize($name) === $normalize($company)
+            );
 
             if ($matchedCompany === null) {
-                validator(['company' => $company], [
-                    'company' => 'in:'.Insurer::where('is_active', true)->pluck('name')->implode(','),
-                ])->validate();
+                throw \Illuminate\Validation\ValidationException::withMessages([
+                    'company' => 'The selected company is invalid.',
+                ]);
             }
 
-            $data['company'] = $matchedCompany;
+            $data['company'] = trim($matchedCompany);
         }
 
         return $data;
@@ -1616,4 +1629,3 @@ class ClientController extends Controller
     }
 
 }
-

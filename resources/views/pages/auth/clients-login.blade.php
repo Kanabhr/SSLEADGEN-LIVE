@@ -82,6 +82,10 @@
             <div class="card-widget">
                 <div class="table-responsive">
                     <table class="table table-hover align-middle w-100" id="loginClientsTable" data-server-paginated data-can-write="{{ auth()->user()->canWrite('clients_login') ? '1' : '0' }}">
+                        <caption class="login-anp-total" title="Total ANP of all login clients matching the current search/filters">
+                            <span class="login-anp-total__label">Total ANP</span>
+                            <span class="login-anp-total__value" id="loginClientsAnpTotal">$0.00</span>
+                        </caption>
                         <thead>
                             <tr class="fs-12 text-muted text-uppercase fw-semibold" style="background: #F8FAFC;">
                                 <th>Policy No.</th>
@@ -261,8 +265,8 @@
                                     <input type="date" class="form-control" id="npwIssueDateInput" name="npw_issue_date" >
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold fs-13 text-dark">Premium <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="npwPremiumInput" name="npw_premium" placeholder="e.g. 150.00" required>
+                                    <label class="form-label fw-semibold fs-13 text-dark">Premium</label>
+                                    <input type="text" class="form-control" id="npwPremiumInput" name="npw_premium" placeholder="e.g. 150.00">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label fw-semibold fs-13 text-dark">Premium Mode</label>
@@ -875,11 +879,29 @@
             border-color: #00a8b5;
             background-color: rgba(0, 168, 181, 0.08);
         }
+
+        #loginClientsTable > caption.login-anp-total {
+            caption-side: top;
+            text-align: right;
+            padding: 0 6px 10px;
+            color: #0f172a;
+        }
+
+        .login-anp-total__label {
+            margin-right: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #64748b;
+        }
+
+        .login-anp-total__value {
+            font-size: 16px;
+            font-weight: 800;
+            color: #00a8b5;
+        }
     </style>
 @endpush
 
 @endsection
-
-
-
-
