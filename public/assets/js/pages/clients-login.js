@@ -522,6 +522,7 @@ function initializeLoginClientsTable() {
                 },
                 dataSrc: function(json) {
                     $('#loginClientsCount').text('(' + (json.recordsTotal || 0).toLocaleString() + ' Clients)');
+                    $('#loginClientsAnpTotal').text('$' + (Number(json.anp_total) || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
                     return json.data || [];
                 },
                 error: function(xhr, error, thrown) {
